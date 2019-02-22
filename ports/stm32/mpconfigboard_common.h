@@ -160,6 +160,13 @@
 #define MICROPY_HW_BDEV_WRITEBLOCK flash_bdev_writeblock
 #endif
 
+// Enable the storage sub-system if a block device is defined
+#if defined(MICROPY_HW_BDEV_IOCTL)
+#define MICROPY_HW_ENABLE_STORAGE (1)
+#else
+#define MICROPY_HW_ENABLE_STORAGE (0)
+#endif
+
 // Enable hardware I2C if there are any peripherals defined
 #if defined(MICROPY_HW_I2C1_SCL) || defined(MICROPY_HW_I2C2_SCL) \
     || defined(MICROPY_HW_I2C3_SCL) || defined(MICROPY_HW_I2C4_SCL)
@@ -173,6 +180,21 @@
 #define MICROPY_HW_ENABLE_CAN (1)
 #else
 #define MICROPY_HW_ENABLE_CAN (0)
+#endif
+
+// Whether to enable the DAC peripheral, exposed as pyb.DAC                                                                                                                                    
+#ifndef MICROPY_HW_ENABLE_DAC
+#define MICROPY_HW_ENABLE_DAC (0)
+#endif
+
+// Whether to enable the PA0-PA3 servo driver, exposed as pyb.Servo
+#ifndef MICROPY_HW_ENABLE_SERVO
+#define MICROPY_HW_ENABLE_SERVO (0)
+#endif
+
+// Whether to enable the SD card interface, exposed as pyb.SDCard
+#ifndef MICROPY_HW_HAS_SDCARD
+#define MICROPY_HW_HAS_SDCARD (0)
 #endif
 
 // Pin definition header file
