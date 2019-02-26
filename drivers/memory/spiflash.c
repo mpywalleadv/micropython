@@ -272,7 +272,7 @@ int mp_spiflash_write(mp_spiflash_t *self, uint32_t addr, size_t len, const uint
             }
         }
         len -= rest;
-        addr += rest;
+        addr += SECTOR_SIZE;
         src += rest;
         offset = 0;
     }
