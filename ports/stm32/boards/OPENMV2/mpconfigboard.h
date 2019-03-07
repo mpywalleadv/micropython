@@ -2,6 +2,9 @@
 #define MICROPY_HW_MCU_NAME         "STM32F427"
 #define MICROPY_PY_SYS_PLATFORM     "OpenMV2"
 
+#define MICROPY_PY_THREAD           (1)
+#define MICROPY_PY_THREAD_GIL       (1)
+
 #define MICROPY_HW_ENABLE_INTERNAL_FLASH_STORAGE (0)
 #define MICROPY_HW_HAS_SWITCH       (0)
 #define MICROPY_HW_HAS_FLASH        (1)
