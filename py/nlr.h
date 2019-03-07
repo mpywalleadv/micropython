@@ -124,11 +124,11 @@ NORETURN void nlr_jump(void *val);
 NORETURN void nlr_jump_fail(void *val);
 
 // use nlr_raise instead of nlr_jump so that debugging is easier
-extern void fb_alloc_free_till_mark();
+//extern void fb_alloc_free_till_mark();
 #ifndef MICROPY_DEBUG_NLR
 #define nlr_raise(val) \
     do { \
-        fb_alloc_free_till_mark(); \
+/*        fb_alloc_free_till_mark();*/ \
         nlr_jump(MP_OBJ_TO_PTR(val)); \
     } while (0)
 // fb_alloc_mark() is the only allowed caller.
@@ -140,7 +140,7 @@ extern void fb_alloc_free_till_mark();
 #include "mpstate.h"
 #define nlr_raise(val) \
     do { \
-        fb_alloc_free_till_mark(); \
+/*        fb_alloc_free_till_mark();*/ \
         /*printf("nlr_raise: nlr_top=%p\n", MP_STATE_THREAD(nlr_top)); \
         fflush(stdout);*/ \
         void *_val = MP_OBJ_TO_PTR(val); \
